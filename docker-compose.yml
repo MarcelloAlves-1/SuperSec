@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:16
+    container_name: supersec-db
+    environment:
+      POSTGRES_DB: supersecdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports: ["5432:5432"]
+    volumes:
+      - "supersec_postgres_data:/var/lib/postgresql/data"
+      - "./docs/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro"
+      - "./database/init.sql:/docker-entrypoint-initdb.d/02-data.sql:ro"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d supersecdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  backend:
+    build: ./backend
+    container_name: supersec-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/supersecdb
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+      JWT_SECRET: supersec-chave-secreta-com-mais-de-32-caracteres
+    ports: ["8080:8080"]
+  frontend:
+    build: ./frontend
+    container_name: supersec-frontend
+    depends_on:
+      - backend
+    ports: ["5173:5173"]
+volumes:
+  supersec_postgres_data:

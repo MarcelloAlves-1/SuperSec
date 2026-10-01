@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560">
+<defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fff3e8"/><stop offset="1" stop-color="#ffffff"/></linearGradient></defs>
+<rect width="800" height="560" rx="36" fill="url(#g)"/>
+<circle cx="650" cy="110" r="95" fill="#e58a35" opacity=".08"/><circle cx="120" cy="470" r="130" fill="#e58a35" opacity=".06"/>
+<g fill="#e58a35" stroke="#e58a35" stroke-linejoin="round">
+<rect x="265" y="150" width="270" height="240" rx="35" fill="#e58a35" opacity=".16" stroke="none"/>
+<rect x="305" y="190" width="190" height="160" rx="28" fill="white" stroke-width="8"/>
+<path d="M350 190c0-55 100-55 100 0" fill="none" stroke-width="12"/>
+</g>
+<text x="400" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="38" font-weight="700" fill="#202638">Caneca</text>
+<text x="400" y="495" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#70798a">Premium</text>
+</svg>

@@ -1,0 +1,1 @@
+package com.supersec.pedidos.dto; import jakarta.validation.constraints.*; import java.util.*; public record OrderRequest(@NotEmpty List<Item> items){ public record Item(@NotNull Long productId,@Min(1) int quantity){} }

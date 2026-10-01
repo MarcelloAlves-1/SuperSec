@@ -1,0 +1,2 @@
+package com.supersec.pedidos.controller; import com.supersec.pedidos.dto.*; import com.supersec.pedidos.service.AuthService; import jakarta.validation.Valid; import org.springframework.web.bind.annotation.*;
+@RestController @RequestMapping("/api/auth") public class AuthController {private final AuthService s;public AuthController(AuthService s){this.s=s;} @PostMapping("/register") public AuthResponse register(@Valid @RequestBody RegisterRequest x){return s.register(x);} @PostMapping("/login") public AuthResponse login(@Valid @RequestBody LoginRequest x){return s.login(x);}}
